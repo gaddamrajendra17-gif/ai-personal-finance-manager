@@ -1,6 +1,6 @@
 # 💎 AI Personal Finance Manager
 
-A full-stack, AI-powered Personal Finance Management (PFM) platform built with **FastAPI**, **React (Vite)**, **Tailwind CSS**, and **Machine Learning**.
+A full-stack, AI-powered Personal Finance Management (PFM) system built with **FastAPI**, **React (Vite)**, **Tailwind CSS**, and **Machine Learning**.
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-1.0-009688?style=for-the-badge&logo=fastapi&logoColor=white)
@@ -35,12 +35,23 @@ graph TD
 
 ## ✨ Key Platform Highlights
 
-- 📊 **Interactive Analytics Dashboard**: Real-time spending breakdowns, net worth visualizers, cash flow metrics, and monthly budget gauges.
+- 📊 **Interactive Analytics Dashboard**: Real-time spending breakdowns, net worth tracking, and cash flow visualizer.
 - 🤖 **AI Financial Advisor & Chatbot**: Conversational AI assistant giving personalized recommendations, budget advice, and spending summaries.
-- 🔮 **Predictive Expense Forecasting**: Machine learning models for 30-day expense trajectory prediction and automated budget anomaly alerts.
-- 📈 **Quantitative Trading & Strategy Backtester**: Historical backtesting suite supporting Simple Moving Average (SMA), RSI, and Momentum strategies.
+- 🔮 **Predictive Expense Forecasting**: Machine learning models predicting 30-day category spending and anomaly alerts.
+- 📈 **Quantitative Trading & Strategy Backtester**: Historical quantitative trading simulation with SMA, RSI, and Momentum indicators.
 - 🧾 **OCR Receipt & Invoice Parser**: Automatic extraction of total amount, date, and merchant details from uploaded bill images.
 - 🔒 **Enterprise-Grade Security**: JWT authentication with Bcrypt password encryption and input data validation.
+
+---
+
+## 🧠 Intelligent AI Modules
+
+| Module | Engine / Model | Capabilities |
+| :--- | :--- | :--- |
+| 🔮 **Expense Forecaster** | Machine Learning (Prophet / Scikit-Learn) | Predicts 30-day category spending trajectories & flags budget anomalies |
+| 🤖 **Financial Advisor Chatbot** | LLM RAG Pipeline (OpenAI / Claude) | Answers user queries, analyzes spending habits & offers personalized savings advice |
+| 📈 **Quantitative Backtester** | SMA, RSI & Momentum Indicators | Simulates historical trading strategies with win rate & Sharpe ratio calculation |
+| 🧾 **OCR Invoice Parser** | Computer Vision (Tesseract OCR / OpenCV) | Extracts merchant names, transaction dates, and total amounts from bill images |
 
 ---
 
@@ -54,20 +65,6 @@ graph TD
 | **Voice Model** | Librosa, Pyin, MFCC Audio Processing |
 | **Recommendation Engine** | Scikit-Learn, DistilBERT, Financial API Integrations |
 | **Deployment** | Docker, Nginx, PowerShell Scripts |
-
----
-
-## 🌐 Key REST API Endpoints Overview
-
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| `POST` | `/api/auth/register` | Register new user account |
-| `POST` | `/api/auth/login` | Login and retrieve JWT access token |
-| `GET` | `/api/dashboard/summary` | Fetch aggregated financial metrics & net worth |
-| `GET` | `/api/transactions/` | List and filter transactions by date & category |
-| `POST` | `/api/ai/forecast` | Generate 30-day ML spending trajectory predictions |
-| `POST` | `/api/ai/chat` | Query the AI Financial Advisor chatbot |
-| `POST` | `/api/trading/backtest` | Execute strategy backtest simulation |
 
 ---
 
