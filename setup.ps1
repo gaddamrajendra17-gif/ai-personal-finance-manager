@@ -1,4 +1,4 @@
-# PFM AI App - Windows PowerShell Setup Script
+# PFM AI Personal Finance Manager - Windows Setup Script
 # Run: .\setup.ps1
 
 Write-Host ""

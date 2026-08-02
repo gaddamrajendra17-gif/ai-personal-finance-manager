@@ -1,4 +1,4 @@
-# Start Frontend - PowerShell
+# Start PFM Frontend - PowerShell
 # Run: .\start-frontend.ps1
 
 Write-Host "Starting PFM Frontend..." -ForegroundColor Cyan
