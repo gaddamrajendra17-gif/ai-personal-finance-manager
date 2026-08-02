@@ -1,78 +1,57 @@
-# PFM AI App - Windows PowerShell Edition
+# 💎 AI Personal Finance Manager
 
-Full-stack AI Personal Finance Manager for Windows.
+A full-stack, AI-powered Personal Finance Management (PFM) system built with **FastAPI**, **React (Vite)**, **Tailwind CSS**, and **Machine Learning**.
 
-## Prerequisites
-- Python 3.11+  : https://python.org/downloads  (check "Add to PATH")
-- Node.js 18+   : https://nodejs.org
-- Docker Desktop: https://docker.com/products/docker-desktop
-- VS Code       : https://code.visualstudio.com
+![Python](https://img.shields.io/badge/Python-3.12-blue?style=flat&logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-1.0-009688?style=flat&logo=fastapi)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=flat&logo=react)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-38B2AC?style=flat&logo=tailwindcss)
+![Status](https://img.shields.io/badge/Status-Active-success)
 
-## Quick Start
+---
 
-### Step 1 - Allow PowerShell scripts
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
+## ✨ Features
 
-### Step 2 - Setup & Run (Docker)
-```powershell
-.\setup.ps1
-```
+- 📊 **Interactive Analytics Dashboard**: Real-time spending breakdowns, net worth tracking, and cash flow visualizer.
+- 🤖 **AI Financial Advisor**: Intelligent chatbot powered by LLMs for personalized budget insights and financial strategy.
+- 🔮 **Predictive Expense Forecasting**: Machine learning models predicting 30-day category spending and anomaly alerts.
+- 📈 **Trading & Backtesting Suite**: Historical quantitative trading simulation with SMA, RSI, and Momentum indicators.
+- 💡 **Smart Budgeting & Goals**: Category budget allocation, visual progress meters, and target savings goal tracker.
+- 🔒 **Secure Authentication**: JWT token authentication with bcrypt password hashing.
 
-### Step 2 - Setup & Run (No Docker)
-```powershell
-.\setup.ps1 -Local
-```
+---
 
-Then open two PowerShell terminals:
+## 🛠️ Technology Stack
 
-Terminal 1:
+- **Frontend**: React, Vite, Tailwind CSS, Recharts, Zustand
+- **Backend**: Python 3.12, FastAPI, SQLAlchemy, Uvicorn, Pydantic
+- **Database**: PostgreSQL / SQLite fallback
+- **Machine Learning**: Scikit-Learn, Pandas, NumPy, XGBoost
+
+---
+
+## 🚀 Quick Start Guide
+
+### Prerequisites
+- [Python 3.10+](https://python.org/downloads)
+- [Node.js 18+](https://nodejs.org)
+
+### 1. Start Backend Server
 ```powershell
 cd backend
-.\venv\Scripts\Activate.ps1
-uvicorn app.main:app --reload --port 8000
+.\venv\Scripts\python.exe -m uvicorn app.main:app --reload --port 8000
 ```
+*(Runs on http://localhost:8000 - API Documentation: http://localhost:8000/docs)*
 
-Terminal 2:
+### 2. Start Frontend App
 ```powershell
 cd frontend
 npm run dev
 ```
+*(Runs on http://localhost:5173)*
 
-## URLs
-- Frontend : http://localhost:5173
-- API Docs : http://localhost:8000/docs
-- pgAdmin  : http://localhost:5050
-- Architecture Details: [docs/architecture.md](file:///c:/Users/HP/Downloads/pfm-app-win/pfm-app-win/docs/architecture.md)
-- AI Categorizer Specs: [docs/transaction_categorization.md](file:///c:/Users/HP/Downloads/pfm-app-win/pfm-app-win/docs/transaction_categorization.md)
-- Predictive Forecasting Specs: [docs/predictive_forecasting.md](file:///c:/Users/HP/Downloads/pfm-app-win/pfm-app-win/docs/predictive_forecasting.md)
-- Safe-to-Save Safety Specs: [docs/safe_to_save_rules.md](file:///c:/Users/HP/Downloads/pfm-app-win/pfm-app-win/docs/safe_to_save_rules.md)
+---
 
-## Demo Login
-- Email    : demo@pfm.com
-- Password : Demo@1234
-
-## Enable AI Chatbot
-Edit backend\.env and add:
-```
-ANTHROPIC_API_KEY=sk-ant-your-key-here
-```
-Get key from: https://console.anthropic.com
-
-## VS Code
-Open pfm-app.code-workspace, then Ctrl+Shift+P > "Tasks: Run Task"
-to start backend, frontend, Docker, or train ML model.
-
-## Common Fixes
-
-"scripts disabled" error:
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-
-Python not found:
-- Reinstall Python, check "Add Python to PATH"
-
-Docker not starting:
-- Open Docker Desktop from Start menu first
+## 🔑 Demo Account
+- **Email**: `demo@pfm.com`
+- **Password**: `Demo@1234`
