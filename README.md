@@ -97,3 +97,11 @@ npm run dev
 ## 🔑 Demo Account
 - **Email**: `demo@pfm.com`
 - **Password**: `Demo@1234`
+
+---
+
+## 👨‍💻 Author
+
+- **Name**: Gaddam Rajendra
+- **Department**: Department of Artificial Intelligence and Machine Learning
+- **Institution**: Dhanalakshmi Srinivasan University — Batch 2023–2027
