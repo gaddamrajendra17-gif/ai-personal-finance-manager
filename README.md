@@ -30,6 +30,43 @@ A full-stack, AI-powered Personal Finance Management (PFM) system built with **F
 
 ---
 
+## 📁 Project Folder Structure
+
+```text
+ai-personal-finance-manager/
+├── backend/                  # FastAPI Python Backend
+│   ├── app/
+│   │   ├── ai/              # AI Agents, Chatbot, OCR & ML Predictors
+│   │   ├── api/             # REST API Routers (Auth, Transactions, Budgets, Trading, etc.)
+│   │   ├── core/            # Database Config, Security (JWT/Bcrypt), Redis Setup
+│   │   ├── models/          # SQLAlchemy Database Models (User, Account, Budget, Transaction)
+│   │   ├── schemas/         # Pydantic Request/Response Schemas
+│   │   ├── services/        # Business Logic Services & Financial Simulations
+│   │   └── main.py          # FastAPI Application Entry Point
+│   ├── tests/               # Backend Pytest Test Suite
+│   └── requirements.txt     # Python Dependencies
+├── frontend/                 # React (Vite) Frontend Application
+│   ├── src/
+│   │   ├── components/      # UI Layouts, Toast Notifications & Modals
+│   │   ├── hooks/           # Custom React Hooks (Real-Time WebSockets)
+│   │   ├── pages/           # Application Views (Dashboard, Budget, Trading, Chatbot)
+│   │   ├── services/        # Axios API Client Integration
+│   │   └── store/           # Zustand State Management (Auth, User State)
+│   ├── package.json         # Frontend Node Dependencies
+│   └── vite.config.js       # Vite Build & Dev Server Configuration
+├── docker/                   # Docker Containerization Configurations
+│   ├── Dockerfile.backend
+│   └── Dockerfile.frontend
+├── docs/                     # Technical Architecture & API Documentation
+├── ml/                       # Machine Learning Training Pipelines & Models
+├── docker-compose.yml        # Docker Multi-Container Orchestration
+├── setup.ps1                 # Automated Windows PowerShell Setup Script
+├── start-backend.ps1         # One-click Backend Start Script
+└── start-frontend.ps1        # One-click Frontend Start Script
+```
+
+---
+
 ## 🚀 Quick Start Guide
 
 ### Prerequisites
