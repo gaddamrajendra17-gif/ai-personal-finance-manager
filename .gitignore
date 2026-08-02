@@ -1,4 +1,5 @@
-# AI Personal Finance Manager - Git Ignore Rules
+# PFM AI App - Git Ignore Rules
+
 # Python
 __pycache__/
 *.py[cod]

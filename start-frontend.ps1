@@ -1,4 +1,5 @@
-# Start PFM Frontend - PowerShell
+# PFM AI App - Start Frontend Script
+
 # Run: .\start-frontend.ps1
 
 Write-Host "Starting PFM Frontend..." -ForegroundColor Cyan

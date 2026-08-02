@@ -1,4 +1,5 @@
-# Train PFM Categorizer Model - PowerShell
+# PFM AI App - Train ML Model Script
+
 # Run: .\train-model.ps1
 
 Write-Host "Training Expense Categorizer Model..." -ForegroundColor Cyan
