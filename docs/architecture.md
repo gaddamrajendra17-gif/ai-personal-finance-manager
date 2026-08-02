@@ -1,4 +1,5 @@
-# Three-Tier End-to-End Architecture
+# PFM AI App Architecture
+
 
 This document outlines the three-tier system architecture implemented in the PFM AI application, mapping frontend, backend, and database components to their respective implementation files in this repository.
 

@@ -1,5 +1,6 @@
 """
-ML Training Pipeline for Expense Categorizer matching the paper specifications:
+PFM AI App - ML Training Pipeline for Expense Categorizer
+
 - Algorithm: Multinomial Naive Bayes
 - Features: TF-IDF with unigrams & bigrams, sub-linear term frequency scaling
 - Dataset size: 10,000 train / 2,500 test records matching the distributions in Table I

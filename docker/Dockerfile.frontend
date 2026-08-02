@@ -1,4 +1,6 @@
+# Dockerfile Frontend - PFM AI App
 FROM node:18-alpine
+
 
 WORKDIR /app
 
