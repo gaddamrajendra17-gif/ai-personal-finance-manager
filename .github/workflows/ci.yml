@@ -30,14 +30,15 @@ jobs:
 
       - name: Run Pytest
         env:
-          PYTHONPATH: backend
+          PYTHONPATH: ${{ github.workspace }}/backend
           DATABASE_URL: sqlite:///./ci_test.db
           SECRET_KEY: test-secret-key-value-for-ci-actions-at-least-32-chars
           ENVIRONMENT: testing
           DEBUG: "false"
         run: |
           cd backend
-          pytest
+          python -m pytest
+
 
   frontend-build:
     name: Frontend Build (Vite)
