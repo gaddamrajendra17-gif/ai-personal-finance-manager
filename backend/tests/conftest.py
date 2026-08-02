@@ -1,8 +1,11 @@
 import os
 import sys
 
-# Get DATABASE_URL from environment or fallback to SQLite
-db_url = os.environ.get("DATABASE_URL", "sqlite:///./ci_test.db")
+import os
+import sys
+
+db_url = os.environ.get("DATABASE_URL", "postgresql://pfm_user:pfm_password@127.0.0.1:5432/pfm_test")
+os.environ["DATABASE_URL"] = db_url
 
 import pytest
 from sqlalchemy import create_engine
@@ -12,16 +15,10 @@ from fastapi.testclient import TestClient
 if db_url.startswith("sqlite"):
     engine = create_engine(db_url, connect_args={"check_same_thread": False})
 else:
-    try:
-        engine = create_engine(db_url, pool_pre_ping=True)
-        with engine.connect() as conn:
-            pass
-    except Exception:
-        db_url = "sqlite:///./ci_test.db"
-        engine = create_engine(db_url, connect_args={"check_same_thread": False})
+    engine = create_engine(db_url, pool_pre_ping=True)
 
-os.environ["DATABASE_URL"] = db_url
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
 
 from app.main import app
 from app.core.database import Base, get_db

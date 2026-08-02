@@ -11,6 +11,21 @@ jobs:
     name: Backend Tests (Pytest)
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_USER: pfm_user
+          POSTGRES_PASSWORD: pfm_password
+          POSTGRES_DB: pfm_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -31,14 +46,13 @@ jobs:
       - name: Run Pytest
         env:
           PYTHONPATH: ${{ github.workspace }}/backend
-          DATABASE_URL: sqlite:///./ci_test.db
+          DATABASE_URL: postgresql://pfm_user:pfm_password@localhost:5432/pfm_test
           SECRET_KEY: test-secret-key-value-for-ci-actions-at-least-32-chars
           ENVIRONMENT: testing
           DEBUG: "false"
         run: |
           cd backend
           python -m pytest
-
 
   frontend-build:
     name: Frontend Build (Vite)
