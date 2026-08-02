@@ -1,0 +1,143 @@
+{
+  "folders": [
+    { "name": "🖥 Backend (FastAPI)", "path": "./backend" },
+    { "name": "⚛️ Frontend (React)", "path": "./frontend" },
+    { "name": "🤖 ML Training", "path": "./ml" },
+    { "name": "🐳 Docker", "path": "./docker" },
+    { "name": "📚 Docs", "path": "./docs" }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder:🖥 Backend (FastAPI)}\\venv\\Scripts\\python.exe",
+    "python.terminal.activateEnvironment": true,
+    "python.linting.enabled": true,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "files.eol": "\n",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "files.associations": {
+      "*.env": "dotenv",
+      "*.env.example": "dotenv",
+      "*.ps1": "powershell"
+    },
+    "emmet.includeLanguages": { "javascript": "javascriptreact" },
+    "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "FastAPI Backend",
+        "type": "python",
+        "request": "launch",
+        "module": "uvicorn",
+        "args": ["app.main:app", "--reload", "--port", "8000"],
+        "cwd": "${workspaceFolder:🖥 Backend (FastAPI)}",
+        "env": { "PYTHONPATH": "${workspaceFolder:🖥 Backend (FastAPI)}" },
+        "jinja": true,
+        "console": "integratedTerminal"
+      }
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Backend: Start Dev Server",
+        "type": "shell",
+        "command": ".\\venv\\Scripts\\Activate.ps1; uvicorn app.main:app --reload --port 8000",
+        "options": {
+          "cwd": "${workspaceFolder:🖥 Backend (FastAPI)}",
+          "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-Command"] }
+        },
+        "group": "build",
+        "presentation": { "reveal": "always", "panel": "new", "tabName": "Backend" },
+        "isBackground": true,
+        "problemMatcher": []
+      },
+      {
+        "label": "Frontend: Start Dev Server",
+        "type": "shell",
+        "command": "npm run dev",
+        "options": {
+          "cwd": "${workspaceFolder:⚛️ Frontend (React)}",
+          "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-Command"] }
+        },
+        "group": "build",
+        "presentation": { "reveal": "always", "panel": "new", "tabName": "Frontend" },
+        "isBackground": true,
+        "problemMatcher": []
+      },
+      {
+        "label": "Backend: Create venv + Install",
+        "type": "shell",
+        "command": "python -m venv venv; .\\venv\\Scripts\\Activate.ps1; pip install -r requirements.txt",
+        "options": {
+          "cwd": "${workspaceFolder:🖥 Backend (FastAPI)}",
+          "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-Command"] }
+        },
+        "group": "build",
+        "presentation": { "reveal": "always", "panel": "shared" }
+      },
+      {
+        "label": "Frontend: npm install",
+        "type": "shell",
+        "command": "npm install",
+        "options": {
+          "cwd": "${workspaceFolder:⚛️ Frontend (React)}",
+          "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-Command"] }
+        },
+        "group": "build",
+        "presentation": { "reveal": "always", "panel": "shared" }
+      },
+      {
+        "label": "Docker: Start All",
+        "type": "shell",
+        "command": "docker-compose up --build",
+        "options": {
+          "cwd": "${workspaceFolder}",
+          "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-Command"] }
+        },
+        "group": "build",
+        "presentation": { "reveal": "always", "panel": "new", "tabName": "Docker" }
+      },
+      {
+        "label": "Docker: Stop All",
+        "type": "shell",
+        "command": "docker-compose down",
+        "options": {
+          "cwd": "${workspaceFolder}",
+          "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-Command"] }
+        },
+        "group": "build",
+        "presentation": { "reveal": "always", "panel": "shared" }
+      },
+      {
+        "label": "ML: Train Categorizer",
+        "type": "shell",
+        "command": ".\\venv\\Scripts\\Activate.ps1; $env:PYTHONPATH = '.'; python ..\\ml\\training\\train_categorizer.py",
+        "options": {
+          "cwd": "${workspaceFolder:🖥 Backend (FastAPI)}",
+          "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-Command"] }
+        },
+        "group": "build",
+        "presentation": { "reveal": "always", "panel": "shared" }
+      }
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "ms-python.black-formatter",
+      "ms-python.vscode-pylance",
+      "bradlc.vscode-tailwindcss",
+      "esbenp.prettier-vscode",
+      "ms-azuretools.vscode-docker",
+      "humao.rest-client",
+      "ms-vscode.powershell",
+      "mikestead.dotenv",
+      "dbaeumer.vscode-eslint",
+      "eamodio.gitlens"
+    ]
+  }
+}

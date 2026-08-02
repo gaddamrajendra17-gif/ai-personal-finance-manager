@@ -1,0 +1,203 @@
+### PFM AI API Tests
+### Install VS Code extension: REST Client (humao.rest-client)
+### Usage: Click "Send Request" above each block
+
+@baseUrl = http://localhost:8000
+@token = PASTE_YOUR_TOKEN_HERE
+
+### ── AUTH ────────────────────────────────────────────────────
+
+### 1. Register
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "full_name": "Test User",
+  "password": "Test@1234",
+  "monthly_income": 80000
+}
+
+###
+
+### 2. Login (copy token from response)
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/x-www-form-urlencoded
+
+username=demo@pfm.com&password=Demo@1234
+
+###
+
+### 3. Get Profile
+GET {{baseUrl}}/api/auth/me
+Authorization: Bearer {{token}}
+
+###
+
+### ── ACCOUNTS ─────────────────────────────────────────────────
+
+### 4. Create Account
+POST {{baseUrl}}/api/accounts/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "bank_name": "HDFC Bank",
+  "account_token": "HDFC_DEMO_TOKEN_001",
+  "account_last4": "1234",
+  "account_type": "savings",
+  "balance": 150000
+}
+
+###
+
+### 5. List Accounts
+GET {{baseUrl}}/api/accounts/
+Authorization: Bearer {{token}}
+
+###
+
+### ── TRANSACTIONS ─────────────────────────────────────────────
+
+### 6. Add Transaction (Expense)
+POST {{baseUrl}}/api/transactions/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "account_id": "PASTE_ACCOUNT_ID_HERE",
+  "amount": 450,
+  "merchant": "Swiggy",
+  "description": "Dinner order",
+  "transaction_type": "DEBIT",
+  "upi_ref": "826012345678",
+  "timestamp": "2026-02-20T20:30:00Z"
+}
+
+###
+
+### 7. Add Income
+POST {{baseUrl}}/api/transactions/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "account_id": "PASTE_ACCOUNT_ID_HERE",
+  "amount": 75000,
+  "merchant": "Company Salary",
+  "description": "February Salary",
+  "transaction_type": "CREDIT",
+  "timestamp": "2026-02-01T09:00:00Z"
+}
+
+###
+
+### 8. Get All Transactions
+GET {{baseUrl}}/api/transactions/
+Authorization: Bearer {{token}}
+
+###
+
+### 9. Monthly Summary
+GET {{baseUrl}}/api/transactions/summary/monthly?month=2&year=2026
+Authorization: Bearer {{token}}
+
+###
+
+### ── BUDGETS ──────────────────────────────────────────────────
+
+### 10. Set Budget
+POST {{baseUrl}}/api/budgets/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "category": "Food & Dining",
+  "limit_amount": 8000
+}
+
+###
+
+### 11. AI Budget Recommendations
+GET {{baseUrl}}/api/budgets/recommend
+Authorization: Bearer {{token}}
+
+###
+
+### 12. Savings Simulation
+POST {{baseUrl}}/api/budgets/simulate
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "current_savings": 20000,
+  "monthly_extra": 5000,
+  "goal": 100000
+}
+
+###
+
+### ── GOALS ────────────────────────────────────────────────────
+
+### 13. Create Goal
+POST {{baseUrl}}/api/goals/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "goal_name": "Goa Vacation",
+  "target_amount": 50000,
+  "monthly_contribution": 5000
+}
+
+###
+
+### ── AI FEATURES ──────────────────────────────────────────────
+
+### 14. Get Forecast
+GET {{baseUrl}}/api/forecast/?periods=30
+Authorization: Bearer {{token}}
+
+###
+
+### 15. Chat with AI
+POST {{baseUrl}}/api/chat/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "message": "How much did I spend on food this month?"
+}
+
+###
+
+### ── DASHBOARD ────────────────────────────────────────────────
+
+### 16. Full Dashboard
+GET {{baseUrl}}/api/dashboard/
+Authorization: Bearer {{token}}
+
+###
+
+### ── WEBHOOK (Bank Simulation) ───────────────────────────────
+
+### 17. Simulate incoming webhook
+POST {{baseUrl}}/api/webhook/transaction
+Content-Type: application/json
+
+{
+  "txn_id": "UPI20260220001",
+  "amount": 350,
+  "merchant": "Zomato",
+  "timestamp": "2026-02-20T14:30:00Z",
+  "account_token": "HDFC_DEMO_TOKEN_001",
+  "type": "DEBIT",
+  "upi_ref": "826099887766",
+  "description": "Food delivery"
+}
+
+###
+
+### 18. Alerts
+GET {{baseUrl}}/api/alerts/
+Authorization: Bearer {{token}}

@@ -1,0 +1,83 @@
+name: CI Test Suite
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  backend-tests:
+    runs-on: ubuntu-latest
+    
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_USER: pfm_user
+          POSTGRES_PASSWORD: pfm_password
+          POSTGRES_DB: pfm_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Run Pytest
+        env:
+          DATABASE_URL: postgresql://pfm_user:pfm_password@localhost:5432/pfm_test
+          REDIS_URL: redis://localhost:6379
+          SECRET_KEY: test-secret-key-value-for-ci-actions-at-least-32-chars
+          ENVIRONMENT: testing
+        run: |
+          cd backend
+          python -m pytest
+
+  frontend-tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Install Playwright Browsers
+        run: |
+          cd frontend
+          npx playwright install chromium --with-deps
+
+      - name: Start Mock/Mockless Backend & Run E2E Tests
+        env:
+          CI: true
+        run: |
+          # Playwright test execution
+          cd frontend
+          npx playwright test

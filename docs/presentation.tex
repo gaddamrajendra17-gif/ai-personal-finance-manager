@@ -1,0 +1,389 @@
+\documentclass[10pt,aspectratio=169]{beamer}
+\usetheme{Madrid}
+
+% Packages for styling and math
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+
+% Define Custom Modern Color Palette (Slate & Teal Theme)
+\definecolor{primaryColor}{RGB}{30, 41, 59}    % Slate 800 (Dark Slate Blue)
+\definecolor{secondaryColor}{RGB}{13, 148, 136} % Teal 600 (Vibrant Teal)
+\definecolor{accentColor}{RGB}{248, 250, 252}    % Slate 50 (Very Light Grey/Blue)
+\definecolor{textColor}{RGB}{15, 23, 42}       % Slate 900 (Dark Charcoal)
+\definecolor{lightTextColor}{RGB}{255, 255, 255}
+
+% Set Beamer theme colors using the custom palette
+\setbeamercolor{palette primary}{bg=primaryColor, fg=lightTextColor}
+\setbeamercolor{palette secondary}{bg=secondaryColor, fg=lightTextColor}
+\setbeamercolor{palette tertiary}{bg=primaryColor!85!black, fg=lightTextColor}
+\setbeamercolor{palette quaternary}{bg=primaryColor!70!black, fg=lightTextColor}
+\setbeamercolor{structure}{fg=secondaryColor}
+\setbeamercolor{titlelike}{parent=palette primary}
+\setbeamercolor{frame title}{bg=primaryColor, fg=lightTextColor}
+\setbeamercolor{block title}{bg=secondaryColor, fg=lightTextColor}
+\setbeamercolor{block body}{bg=accentColor, fg=textColor}
+\setbeamercolor{normal text}{fg=textColor, bg=white}
+
+% Title, Subtitle, and Metadata
+\title[PFM AI App]{PFM AI App - Windows PowerShell Edition}
+\subtitle{A Full-Stack AI Personal Finance Manager}
+\author[Developer]{AI Engineering Group / Project Team}
+\institute[Academic / Org]{Personal Finance Manager Project Presentation}
+\date{\today}
+
+\begin{document}
+
+% Slide 1: Title Slide
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+% Slide 2: Executive Summary
+\begin{frame}{1. Executive Summary}
+    \begin{itemize}
+        \item \textbf{Overview:} The \textbf{PFM AI App} is a state-of-the-art, full-stack Personal Finance Manager designed to run in a Windows PowerShell environment.
+        \item \textbf{Value Proposition:} Minimizes manual friction using automated categorization, anomaly detection, predictive forecasting, and a natural language chatbot interface.
+        \item \textbf{Architecture:} Decoupled three-tier architecture utilizing a \textbf{Python FastAPI} backend, \textbf{React 18 / Vite} frontend, and a \textbf{PostgreSQL} database.
+        \item \textbf{Infrastructure:} Fully containerized and orchestrated via Docker, with PowerShell scripting for seamless local developer onboarding.
+    \end{itemize}
+\end{frame}
+
+% Slide 3: Introduction & Objectives
+\begin{frame}{2. Introduction \& Project Objectives}
+    \begin{block}{The Problem}
+        Traditional finance tracking is tedious, heavily manual, and lacks proactive intelligence, leading to poor budget adherence and late anomaly detection.
+    \end{block}
+    
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \textbf{Core Project Objectives:}
+            \begin{itemize}
+                \item \textbf{Automation:} Reduce data entry via SMS parsing and WebSockets.
+                \item \textbf{Intelligence:} Apply statistical and ML engines to predict cash flow and detect spending spikes.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item \textbf{Conversational UI:} Allow natural-language queries to financial histories via RAG.
+                \item \textbf{Gamification:} Encourage positive habits through streaks, badges, and points.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Slide 4: System Architecture
+\begin{frame}{3. Three-Tier System Architecture}
+    \begin{center}
+        \begin{tikzpicture}[node distance=1.8cm, auto, >=latex', thick]
+            \tikzstyle{block} = [rectangle, draw, fill=primaryColor, text=white, text width=4cm, text centered, rounded corners, minimum height=1cm]
+            \tikzstyle{line} = [draw, <->, Ultra thick, secondaryColor]
+            
+            % Nodes
+            \node [block] (front) {Frontend Layer\\(React 18.2 / Vite / Zustand)};
+            \node [block, below of=front] (back) {Backend Layer\\(FastAPI / Python 3.11)};
+            \node [block, below of=back] (db) {Database / Caching Layer\\(PostgreSQL 17 / Redis)};
+            
+            % Connections
+            \path [line] (front) -- (back);
+            \path [line] (back) -- (db);
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+% Slide 5: Backend & Database Specifications
+\begin{frame}{4. Backend \& Database Specifications}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Python FastAPI Backend}
+                \begin{itemize}
+                    \item \textbf{Framework:} FastAPI for high-performance, asynchronous REST APIs.
+                    \item \textbf{API Surface:} 8 core router groups: Auth, Accounts, Transactions, Budgets, Goals, Predictions, Alerts, and WebSockets.
+                    \item \textbf{Security:} JWT tokens for session auth and Bcrypt (Passlib) for hashing.
+                    \item \textbf{ORM:} SQLAlchemy with Alembic migrations.
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Database \& Caching}
+                \begin{itemize}
+                    \item \textbf{Primary DB:} PostgreSQL 17 containing 8+ relational entities (\textit{users}, \textit{transactions}, \textit{budgets}, \textit{savings\_goals}, \textit{alerts}, \textit{recurring\_tx}, \textit{forecasts}, \textit{badges}).
+                    \item \textbf{Caching/PubSub:} Redis (aioredis) for caching predictions and managing real-time WebSocket messaging.
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Slide 6: Frontend Architecture
+\begin{frame}{5. Frontend Architecture \& Visualization}
+    \begin{itemize}
+        \item \textbf{Core Stack:} React 18.2 bundled with Vite for near-instant Hot Module Replacement (HMR).
+        \item \textbf{State Management:} Zustand for a lightweight, atomic global client state.
+        \item \textbf{Styling Theme:} Modern dark-themed dashboard styled with Tailwind CSS utility classes.
+        \item \textbf{Visualizations:} Dynamic graphs and charts rendered via Recharts (Pie charts for category breakdowns, line graphs for forecasting).
+        \item \textbf{Real-Time Rendering:} Updates immediately upon WebSocket event arrival (using custom React hooks).
+        \item \textbf{Speech Integration:} Integrates the Web Speech API configured to the \texttt{en-IN} locale for hands-free transaction input.
+    \end{itemize}
+\end{frame}
+
+% Slide 7: AI Transaction Categorizer
+\begin{frame}{6. AI Transaction Categorizer}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \textbf{Pipeline Configuration:}
+            \begin{itemize}
+                \item Trained on \textbf{10,000 Indian merchant transactions} across 9 core categories.
+                \item Normalization (lowercase, strip punctuation).
+                \item NLTK English Stopwords filtering.
+                \item TF-IDF feature extraction (unigrams/bigrams, vocabulary size: 5,000).
+                \item Multinomial Naive Bayes classifier ($\alpha = 1.0$).
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Model Benchmarks (Accuracy)}
+                \centering
+                \begin{tabular}{llc}
+                    \toprule
+                    Version & Algorithm & Accuracy \\
+                    \midrule
+                    V1 & Keyword Rules & 78.0\% \\
+                    V2 & TF-IDF + Naive Bayes & 81.7\% \\
+                    \textbf{V3 (Ours)} & \textbf{NB + TF-IDF + Rules} & \textbf{85.3\%} \\
+                    \bottomrule
+                \end{tabular}
+            \end{block}
+            \textbf{Ablation Study:}
+            \begin{itemize}
+                \item Without SMS vocabulary fallback: 80.1\%
+                \item With SMS vocabulary fallback: 83.8\%
+                \item Full System (V3): \textbf{85.3\%} (weighted-average accuracy)
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Slide 8: AI Predictive Forecasting Engine
+\begin{frame}{7. AI Predictive Expense Forecasting}
+    \begin{block}{Ordinary Least Squares (OLS) Linear Regression}
+        Predicts next-month category spending using ordinal monthly indexes:
+        $$\hat{y}(t+1) = \beta_0 + \beta_1 \times t$$
+        where $t \in \{0, 1, ..., n-1\}$, $\beta_0$ is the intercept, and $\beta_1$ is spending velocity.
+    \end{block}
+
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{Confidence Score Mapping:}
+            $$\text{Confidence} = \min(95, 50 + R^2 \times 45) \to [50, 95]\%$$
+            
+            \textbf{Trend Assignment:}
+            \begin{itemize}
+                \item \textbf{Increasing:} $\beta_1 > 0.05 \times \mu_c$
+                \item \textbf{Decreasing:} $\beta_1 < -0.05 \times \mu_c$
+                \item \textbf{Stable:} otherwise (within $\pm 5\%$)
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Benchmarks (MAPE vs History):}
+            \begin{itemize}
+                \item 6-11 months history: 18.3\% MAPE
+                \item $\ge 12$ months history: \textbf{12.1\% MAPE}
+            \end{itemize}
+            \begin{block}{Cold Start Fallback}
+                For $< 2$ months of history, defaults to the historical mean with $60\%$ confidence and a \texttt{stable} trend.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Slide 9: Predictive AI Savings Advisor & Actionable Transfers
+\begin{frame}{8. Predictive AI Savings Advisor \& Actionable Transfers}
+    To elevate savings tracking, we upgraded the engine to perform predictive cash flow audits and interactive actions:
+    
+    \begin{block}{1. Multi-Factor Cash Flow Runway Auditing}
+        Analyzes the last 30 days of transactions (income vs. spent) to calculate your \textbf{net monthly savings rate} and \textbf{daily burn rate}.
+        Warns if current bank balance covers $<15$ days of spending.
+    \end{block}
+
+    \begin{block}{2. Actionable AI Recommendations (One-Click Application)}
+        \begin{itemize}
+            \item \textbf{Off-Track Goals:} Automatically calculates required monthly increase to hit target deadlines, allowing adjustment with one click.
+            \item \textbf{Surplus Sweep:} Suggests sweeping 30\% of net monthly surplus cash flow directly into priority savings goals.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+% Slide 10: RAG-based AI Conversational Chatbot
+\begin{frame}{9. RAG-based AI Chatbot}
+    Provides contextual natural language insights by executing a Retrieval-Augmented Generation (RAG) pipeline:
+    
+    \begin{center}
+        \begin{tikzpicture}[node distance=1.5cm, auto, >=latex', thick]
+            \tikzstyle{block} = [rectangle, draw, fill=secondaryColor, text=white, text width=2.8cm, text centered, rounded corners, minimum height=0.8cm]
+            \tikzstyle{line} = [draw, ->, Ultra thick, primaryColor]
+            
+            % Nodes
+            \node [block] (user) {User Query\\``What did I spend?''};
+            \node [block, right=0.6cm of user] (embed) {Sentence-Transformers\\(Vector Embedding)};
+            \node [block, right=0.6cm of embed] (chroma) {ChromaDB\\Query Context};
+            \node [block, right=0.6cm of chroma] (llm) {LLM (Claude/GPT)\\Contextual Answer};
+            
+            % Connections
+            \path [line] (user) -- (embed);
+            \path [line] (embed) -- (chroma);
+            \path [line] (chroma) -- (llm);
+        \end{tikzpicture}
+    \end{center}
+    
+    \begin{itemize}
+        \item \textbf{Context Ingestion:} Retrieves matching user transaction data via semantic vectors from ChromaDB.
+        \item \textbf{API Integration:} Connects securely to Anthropic/OpenAI APIs using LangChain.
+        \item \textbf{Security:} Ensures the LLM only operates on tokenized, user-scoped data.
+    \end{itemize}
+\end{frame}
+
+% Slide 11: Database Schema & Entity Relationships
+\begin{frame}{10. Database Schema \& Entity Relationships}
+    \centering
+    \begin{tabular}{lll}
+        \toprule
+        Table Name & Key Fields & Primary Relationships \\
+        \midrule
+        \textbf{users} & \texttt{id} (UUID), \texttt{email}, \texttt{hashed\_password}, \texttt{monthly\_income} & One-to-Many: Accounts, Budgets, Goals \\
+        \textbf{accounts} & \texttt{id}, \texttt{user\_id}, \texttt{bank\_name}, \texttt{balance}, \texttt{account\_type} & Foreign Key: \texttt{users.id} \\
+        \textbf{transactions} & \texttt{id}, \texttt{account\_id}, \texttt{amount}, \texttt{category}, \texttt{is\_anomaly} & Foreign Key: \texttt{accounts.id} (AI labeled) \\
+        \textbf{budgets} & \texttt{id}, \texttt{user\_id}, \texttt{category}, \texttt{limit\_amount}, \texttt{spent} & Foreign Key: \texttt{users.id} (Real-time tracking) \\
+        \textbf{savings\_goals} & \texttt{id}, \texttt{user\_id}, \texttt{target\_amount}, \texttt{current\_amount} & Foreign Key: \texttt{users.id} \\
+        \textbf{alerts} & \texttt{id}, \texttt{user\_id}, \texttt{alert\_type}, \texttt{severity}, \texttt{message} & Foreign Key: \texttt{users.id} \\
+        \bottomrule
+    \end{tabular}
+\end{frame}
+
+% Slide 12: Gamification & Engagement Module
+\begin{frame}{11. Gamification \& Engagement Module}
+    Encourages positive financial behavior by implementing a gaming model within personal finance:
+    
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Core Reward Mechanics}
+                \begin{itemize}
+                    \item \textbf{Activity Points:} Awarded for budget compliance, logging in, and categorizing transactions.
+                    \item \textbf{Streaks:} Consecutive days logging into the app increases point multipliers.
+                    \item \textbf{Badges:} Unlock achievements like ``Super Saver'' or ``Budget Master.''
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Leaderboard System}
+                \begin{itemize}
+                    \item Computes global rankings anonymously.
+                    \item Motivates users through comparative savings rates.
+                    \item Tracked via \texttt{badges} and \texttt{challenges} tables in the database.
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Slide 13: Core Integrations & Utilities
+\begin{frame}{12. Core Integrations \& Advanced Utilities}
+    \begin{itemize}
+        \item \textbf{Real-Time WebSockets Server:}
+            \begin{itemize}
+                \item Handled by the `ConnectionManager` class in \texttt{notifications\_api.py}.
+                \item Pushes instant notifications for anomalous transactions and budget overruns.
+                \item Broadcasts live transaction updates to refresh dashboard amounts in real time.
+            \end{itemize}
+        \item \textbf{SMS Import Utility:}
+            \begin{itemize}
+                \item Automates ingestion of transactions by parsing structured bank notification SMS.
+                \item Uses an SMS vocabulary map in \texttt{sms\_receiver.py} as a deterministic fallback category mapper.
+            \end{itemize}
+        \item \textbf{Split Expense Utility:}
+            \begin{itemize}
+                \item Provides bill-splitting calculation logic.
+                \item Tracks IOUs and balances between friends in shared budget groups.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+% Slide 14: Deployment & Local Setup Workflow
+\begin{frame}{13. Deployment \& Local Setup Workflow}
+    The project is optimized for developers and system deployers using custom scripts:
+    
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{PowerShell Automation (Windows)}
+                \begin{itemize}
+                    \item \textbf{\texttt{setup.ps1}:} Detects prerequisites (Python, Node, Docker), creates backend \texttt{.venv}, installs NPM modules, and orchestrates containers.
+                    \item \textbf{\texttt{start-backend.ps1}:} Activates venv, runs \texttt{uvicorn app.main:app}.
+                    \item \textbf{\texttt{start-frontend.ps1}:} Boots Vite server.
+                    \item \textbf{\texttt{train-model.ps1}:} Retrains ML models.
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Docker Orchestration}
+                Configured via \texttt{docker-compose.yml} to coordinate:
+                \begin{itemize}
+                    \item \textbf{\texttt{db}:} PostgreSQL 17 database.
+                    \item \textbf{\texttt{redis}:} Caching and Pub/Sub channel.
+                    \item \textbf{\texttt{pgadmin}:} Visual database admin GUI at port 5050.
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Slide 15: Verification & Testing Strategy
+\begin{frame}{14. Verification \& Testing Strategy}
+    Ensures system components run reliably before and after code changes:
+    
+    \begin{itemize}
+        \item \textbf{Backend REST API Testing:}
+            \begin{itemize}
+                \item Comprehensive REST test suites defined in \texttt{docs/api-tests.http}.
+                \item Manual endpoint verification for authentication tokens, transaction CRUD, and model inference.
+            \end{itemize}
+        \item \textbf{Machine Learning Validation:}
+            \begin{itemize}
+                \item Hold-out validation sets (2,500 records) to test the TF-IDF Naive Bayes accuracy.
+                \item Anomaly threshold evaluations for XGBoost classification margins.
+            \end{itemize}
+        \item \textbf{Deployment Verification:}
+            \begin{itemize}
+                \item Automated checking in \texttt{setup.ps1} to confirm container health and dependencies (Node.js, Python, Docker).
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+% Slide 16: Future Project Enhancements
+\begin{frame}{15. Future Project Enhancements}
+    \begin{itemize}
+        \item \textbf{Open Banking API (Plaid/Salt Edge):} Replace manual entries and SMS scrapers with direct bank-to-app feed integrations.
+        \item \textbf{Investment and Wealth Tracking:} Support tracking of active portfolios (mutual funds, stocks, crypto) with real-time API market valuations.
+        \item \textbf{Multi-Currency and Cross-Border Support:} Real-time exchange rate calculations for foreign currencies.
+        \item \textbf{Native Mobile Application:} Develop a React Native build using the shared Zustand state design to target iOS and Android platforms.
+    \end{itemize}
+\end{frame}
+
+% Slide 17: Conclusion
+\begin{frame}{16. Conclusion \& Questions}
+    \begin{block}{Summary}
+        The \textbf{PFM AI App} represents a modern, AI-driven evolution of personal finance software. By integrating high-performance APIs (FastAPI) and responsive interfaces (React) with statistical and LLM models, it establishes a robust framework for personal money management.
+    \end{block}
+    
+    \centering
+    \vspace{0.8cm}
+    {\large \textbf{Thank You!}}
+    
+    \vspace{0.4cm}
+    \textbf{Questions \& Answers Session}
+\end{frame}
+
+\end{document}
