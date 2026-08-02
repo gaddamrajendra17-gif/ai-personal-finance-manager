@@ -1,24 +1,46 @@
 # 💎 AI Personal Finance Manager
 
-A full-stack, AI-powered Personal Finance Management (PFM) system built with **FastAPI**, **React (Vite)**, **Tailwind CSS**, and **Machine Learning**.
+A full-stack, AI-powered Personal Finance Management (PFM) platform built with **FastAPI**, **React (Vite)**, **Tailwind CSS**, and **Machine Learning**.
 
-![Python](https://img.shields.io/badge/Python-3.12-blue?style=flat&logo=python)
-![FastAPI](https://img.shields.io/badge/FastAPI-1.0-009688?style=flat&logo=fastapi)
-![React](https://img.shields.io/badge/React-18-61DAFB?style=flat&logo=react)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-38B2AC?style=flat&logo=tailwindcss)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?style=flat&logo=postgresql)
-![Status](https://img.shields.io/badge/Status-Active-success)
+![Python](https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-1.0-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 ---
 
-## ✨ Features
+## 🏛️ System Architecture
 
-- 📊 **Interactive Analytics Dashboard**: Real-time spending breakdowns, net worth tracking, and cash flow visualizer.
-- 🤖 **AI Financial Advisor**: Intelligent chatbot powered by LLMs for personalized budget insights and financial strategy.
-- 🔮 **Predictive Expense Forecasting**: Machine learning models predicting 30-day category spending and anomaly alerts.
-- 📈 **Trading & Backtesting Suite**: Historical quantitative trading simulation with SMA, RSI, and Momentum indicators.
-- 💡 **Smart Budgeting & Goals**: Category budget allocation, visual progress meters, and target savings goal tracker.
-- 🔒 **Secure Authentication**: JWT token authentication with bcrypt password hashing.
+```mermaid
+graph TD
+    User([User / Browser]) -->|React + Vite SPA| Frontend[Frontend Layer]
+    Frontend -->|REST API / WebSockets| Backend[FastAPI Backend]
+    
+    subgraph Core Engine
+        Backend -->|ORM| DB[(PostgreSQL / SQLite)]
+        Backend -->|Session Cache| Redis[(Redis Cache)]
+    end
+
+    subgraph Intelligence & Analytics
+        Backend -->|Expense Prediction| ML[Scikit-Learn / XGBoost ML]
+        Backend -->|Financial Chatbot| LLM[OpenAI / Claude LLM]
+        Backend -->|Quantitative Trading| Backtest[Backtesting Engine]
+        Backend -->|Bill Scanning| OCR[Tesseract OCR Engine]
+    end
+```
+
+---
+
+## ✨ Key Platform Highlights
+
+- 📊 **Interactive Analytics Dashboard**: Real-time spending breakdowns, net worth visualizers, cash flow metrics, and monthly budget gauges.
+- 🤖 **AI Financial Advisor & Chatbot**: Conversational AI assistant giving personalized recommendations, budget advice, and spending summaries.
+- 🔮 **Predictive Expense Forecasting**: Machine learning models for 30-day expense trajectory prediction and automated budget anomaly alerts.
+- 📈 **Quantitative Trading & Strategy Backtester**: Historical backtesting suite supporting Simple Moving Average (SMA), RSI, and Momentum strategies.
+- 🧾 **OCR Receipt & Invoice Parser**: Automatic extraction of total amount, date, and merchant details from uploaded bill images.
+- 🔒 **Enterprise-Grade Security**: JWT authentication with Bcrypt password encryption and input data validation.
 
 ---
 
@@ -32,6 +54,20 @@ A full-stack, AI-powered Personal Finance Management (PFM) system built with **F
 | **Voice Model** | Librosa, Pyin, MFCC Audio Processing |
 | **Recommendation Engine** | Scikit-Learn, DistilBERT, Financial API Integrations |
 | **Deployment** | Docker, Nginx, PowerShell Scripts |
+
+---
+
+## 🌐 Key REST API Endpoints Overview
+
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST` | `/api/auth/register` | Register new user account |
+| `POST` | `/api/auth/login` | Login and retrieve JWT access token |
+| `GET` | `/api/dashboard/summary` | Fetch aggregated financial metrics & net worth |
+| `GET` | `/api/transactions/` | List and filter transactions by date & category |
+| `POST` | `/api/ai/forecast` | Generate 30-day ML spending trajectory predictions |
+| `POST` | `/api/ai/chat` | Query the AI Financial Advisor chatbot |
+| `POST` | `/api/trading/backtest` | Execute strategy backtest simulation |
 
 ---
 
@@ -60,14 +96,10 @@ ai-personal-finance-manager/
 │   ├── package.json         # Frontend Node Dependencies
 │   └── vite.config.js       # Vite Build & Dev Server Configuration
 ├── docker/                   # Docker Containerization Configurations
-│   ├── Dockerfile.backend
-│   └── Dockerfile.frontend
 ├── docs/                     # Technical Architecture & API Documentation
 ├── ml/                       # Machine Learning Training Pipelines & Models
 ├── docker-compose.yml        # Docker Multi-Container Orchestration
-├── setup.ps1                 # Automated Windows PowerShell Setup Script
-├── start-backend.ps1         # One-click Backend Start Script
-└── start-frontend.ps1        # One-click Frontend Start Script
+└── setup.ps1                 # Automated Setup Script
 ```
 
 ---
@@ -94,7 +126,7 @@ npm run dev
 
 ---
 
-## 🔑 Demo Account
+## 🔑 Demo Credentials
 - **Email**: `demo@pfm.com`
 - **Password**: `Demo@1234`
 
