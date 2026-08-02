@@ -11,18 +11,6 @@ A full-stack, AI-powered Personal Finance Management (PFM) system built with **F
 
 ---
 
-## 🏛️ System Architecture
-
-```mermaid
-graph LR
-    A["📱 Client (React SPA)"] -->|REST API / WebSockets| B["⚡ Backend (FastAPI)"]
-    B -->|Persistence| C["💾 Database (PostgreSQL / SQLite)"]
-    B -->|Caching| D["⚡ Cache (Redis)"]
-    B -->|AI Engine| E["🤖 Intelligence (ML & Chatbot)"]
-```
-
----
-
 ## ✨ Key Platform Highlights
 
 - 📊 **Interactive Analytics Dashboard**: Real-time spending breakdowns, net worth tracking, and cash flow visualizer.
