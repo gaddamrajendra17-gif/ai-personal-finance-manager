@@ -14,21 +14,11 @@ A full-stack, AI-powered Personal Finance Management (PFM) system built with **F
 ## 🏛️ System Architecture
 
 ```mermaid
-graph TD
-    User([User / Browser]) -->|React + Vite SPA| Frontend[Frontend Layer]
-    Frontend -->|REST API / WebSockets| Backend[FastAPI Backend]
-    
-    subgraph Core Engine
-        Backend -->|ORM| DB[(PostgreSQL / SQLite)]
-        Backend -->|Session Cache| Redis[(Redis Cache)]
-    end
-
-    subgraph Intelligence & Analytics
-        Backend -->|Expense Prediction| ML[Scikit-Learn / XGBoost ML]
-        Backend -->|Financial Chatbot| LLM[OpenAI / Claude LLM]
-        Backend -->|Quantitative Trading| Backtest[Backtesting Engine]
-        Backend -->|Bill Scanning| OCR[Tesseract OCR Engine]
-    end
+graph LR
+    A["📱 Client (React SPA)"] -->|REST API / WebSockets| B["⚡ Backend (FastAPI)"]
+    B -->|Persistence| C["💾 Database (PostgreSQL / SQLite)"]
+    B -->|Caching| D["⚡ Cache (Redis)"]
+    B -->|AI Engine| E["🤖 Intelligence (ML & Chatbot)"]
 ```
 
 ---
