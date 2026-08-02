@@ -1,4 +1,4 @@
-# Start Backend - PowerShell
+# Start PFM Backend - PowerShell
 # Run: .\start-backend.ps1
 
 Write-Host "Starting PFM Backend..." -ForegroundColor Cyan
