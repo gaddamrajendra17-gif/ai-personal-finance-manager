@@ -161,7 +161,7 @@ async def test_chat_with_ai_fallback_triggered(mock_settings, db_session):
     assert "LLM API key" in res
 
 @patch("app.ai.agent.settings")
-@patch("anthropic.Anthropic")
+@patch("anthropic.Anthropic", create=True)
 @pytest.mark.asyncio
 async def test_chat_with_ai_anthropic_api(mock_anthropic_cls, mock_settings, db_session):
     mock_settings.ANTHROPIC_API_KEY = "dummy_key"
@@ -181,7 +181,7 @@ async def test_chat_with_ai_anthropic_api(mock_anthropic_cls, mock_settings, db_
     assert res == "Mock Claude Response"
 
 @patch("app.ai.agent.settings")
-@patch("openai.OpenAI")
+@patch("openai.OpenAI", create=True)
 @pytest.mark.asyncio
 async def test_chat_with_ai_openai_api(mock_openai_cls, mock_settings, db_session):
     mock_settings.ANTHROPIC_API_KEY = None
@@ -199,8 +199,8 @@ async def test_chat_with_ai_openai_api(mock_openai_cls, mock_settings, db_sessio
     assert res == "Mock GPT Response"
 
 @patch("app.ai.agent.settings")
-@patch("anthropic.Anthropic", side_effect=Exception)
-@patch("openai.OpenAI")
+@patch("anthropic.Anthropic", create=True, side_effect=Exception)
+@patch("openai.OpenAI", create=True)
 @pytest.mark.asyncio
 async def test_chat_with_ai_anthropic_exception_falls_back_to_openai(mock_openai_cls, mock_anthropic_cls, mock_settings, db_session):
     mock_settings.ANTHROPIC_API_KEY = "dummy_key"

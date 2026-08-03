@@ -90,7 +90,7 @@ def test_forecast_excludes_credits(db_session):
     df = get_user_daily_spending(str(user.id), db_session)
     assert len(df) == 0
 
-@patch("prophet.Prophet", side_effect=ImportError)
+@patch("prophet.Prophet", create=True, side_effect=ImportError)
 def test_forecast_moving_average_fallback(mock_prophet, db_session):
     user = User(email="forecast5@pfm.com", full_name="User", hashed_password="pwd")
     db_session.add(user)
@@ -113,7 +113,7 @@ def test_forecast_moving_average_fallback(mock_prophet, db_session):
     assert res["model"] == "MovingAverage + LSTM"
     assert res["next_month_forecast"] == 3000.0
 
-@patch("prophet.Prophet")
+@patch("prophet.Prophet", create=True)
 def test_forecast_with_prophet_mocked_success(mock_prophet_cls, db_session):
     user = User(email="forecast6@pfm.com", full_name="User", hashed_password="pwd")
     db_session.add(user)
@@ -177,7 +177,7 @@ def test_forecast_negative_prediction_bounded_to_zero(db_session):
         mock_spending.return_value = df
         
         # Will trigger MovingAverage fallback since prophet is either unmocked or we trigger SMA
-        with patch("prophet.Prophet", side_effect=ImportError):
+        with patch("prophet.Prophet", create=True, side_effect=ImportError):
             res = forecast_expenses(str(user.id), db_session, periods=30)
             assert res["next_month_forecast"] == 0.0
             assert res["daily_forecast"][0]["predicted"] == 0.0
@@ -198,7 +198,7 @@ def test_forecast_saves_correct_number_of_days_in_db(db_session):
         db_session.add(t)
     db_session.commit()
 
-    with patch("prophet.Prophet", side_effect=ImportError):
+    with patch("prophet.Prophet", create=True, side_effect=ImportError):
         forecast_expenses(str(user.id), db_session, periods=15)
         count = db_session.query(Forecast).filter(Forecast.user_id == user.id).count()
         assert count == 15
@@ -219,7 +219,7 @@ def test_forecast_structure_response(db_session):
         db_session.add(t)
     db_session.commit()
 
-    with patch("prophet.Prophet", side_effect=ImportError):
+    with patch("prophet.Prophet", create=True, side_effect=ImportError):
         res = forecast_expenses(str(user.id), db_session, periods=30)
         assert "status" in res
         assert "next_month_forecast" in res
@@ -243,7 +243,7 @@ def test_forecast_moving_average_correct_math(db_session):
         db_session.add(t)
     db_session.commit()
 
-    with patch("prophet.Prophet", side_effect=ImportError):
+    with patch("prophet.Prophet", create=True, side_effect=ImportError):
         res = forecast_expenses(str(user.id), db_session, periods=10)
         assert res["next_month_forecast"] == 2000.0
         assert res["daily_avg"] == 200.0
@@ -268,6 +268,6 @@ def test_forecast_with_custom_period(db_session):
         db_session.add(t)
     db_session.commit()
 
-    with patch("prophet.Prophet", side_effect=ImportError):
+    with patch("prophet.Prophet", create=True, side_effect=ImportError):
         res = forecast_expenses(str(user.id), db_session, periods=45)
         assert len(res["daily_forecast"]) == 45
