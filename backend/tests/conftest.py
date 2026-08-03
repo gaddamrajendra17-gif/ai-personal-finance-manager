@@ -4,7 +4,7 @@ import sys
 import os
 import sys
 
-db_url = os.environ.get("DATABASE_URL", "sqlite:///./ci_test.db")
+db_url = os.environ.get("DATABASE_URL", "postgresql://pfm_user:pfm_password@127.0.0.1:5432/pfm_test")
 os.environ["DATABASE_URL"] = db_url
 
 import pytest
@@ -12,17 +12,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from fastapi.testclient import TestClient
 
-try:
-    if db_url.startswith("sqlite"):
-        engine = create_engine(db_url, connect_args={"check_same_thread": False})
-    else:
-        engine = create_engine(db_url, pool_pre_ping=True)
-        with engine.connect() as conn:
-            pass
-except Exception:
-    db_url = "sqlite:///./ci_test.db"
-    os.environ["DATABASE_URL"] = db_url
+if db_url.startswith("sqlite"):
     engine = create_engine(db_url, connect_args={"check_same_thread": False})
+else:
+    engine = create_engine(db_url, pool_pre_ping=True)
 
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
