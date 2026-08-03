@@ -1,4 +1,4 @@
-# PFM AI App Architecture
+# PFM AI Financial Manager Architecture Overview
 
 
 This document outlines the three-tier system architecture implemented in the PFM AI application, mapping frontend, backend, and database components to their respective implementation files in this repository.
@@ -40,7 +40,8 @@ graph TD
 
 ---
 
-## 🏛️ Architecture Breakdown
+## 🏛️<!-- PFM AI Financial Manager Architecture Documentation -->
+## Architecture Overview
 
 ### 1. Frontend Layer ([React 18.2 / Vite](file:///c:/Users/HP/Downloads/pfm-app-win/pfm-app-win/frontend/package.json))
 *   **Dark-themed financial dashboard**: Implemented in [DashboardPage.jsx](file:///c:/Users/HP/Downloads/pfm-app-win/pfm-app-win/frontend/src/pages/DashboardPage.jsx) using a dark Tailwind color theme.

@@ -1,5 +1,6 @@
 # Dockerfile Backend - PFM AI App
-FROM python:3.11-slim
+# PFM AI Financial Manager - Backend Dockerfile
+FROM python:3.12-slim
 
 
 WORKDIR /app

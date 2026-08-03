@@ -1,5 +1,5 @@
 """
-PFM AI App - ML Training Pipeline for Expense Categorizer
+PFM AI Financial Manager - ML Training Pipeline for Expense Categorizer
 
 - Algorithm: Multinomial Naive Bayes
 - Features: TF-IDF with unigrams & bigrams, sub-linear term frequency scaling

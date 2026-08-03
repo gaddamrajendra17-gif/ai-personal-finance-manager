@@ -46,7 +46,7 @@ jobs:
       - name: Run Pytest
         env:
           PYTHONPATH: ${{ github.workspace }}/backend
-          DATABASE_URL: postgresql://pfm_user:pfm_password@localhost:5432/pfm_test
+          DATABASE_URL: postgresql://pfm_user:pfm_password@127.0.0.1:5432/pfm_test
           SECRET_KEY: test-secret-key-value-for-ci-actions-at-least-32-chars
           ENVIRONMENT: testing
           DEBUG: "false"
