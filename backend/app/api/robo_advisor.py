@@ -100,3 +100,4 @@ def get_recommendations(
 ):
     """Get customized spending reduction and investment allocation suggestions."""
     return RoboAdvisorService.get_personalized_recommendations(str(current_user.id), db)
+

@@ -83,3 +83,4 @@ def test_recurring_transaction_flow(client, auth_headers, db_session):
     # Verify list is empty
     list_resp2 = client.get("/api/recurring/", headers=auth_headers)
     assert len(list_resp2.json()) == 0
+

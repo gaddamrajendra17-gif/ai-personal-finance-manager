@@ -59,3 +59,4 @@ def update_budget_on_transaction(
             f"You've used 85% of your {category} budget. ₹{remaining:.2f} remaining.",
             "MEDIUM"
         )
+

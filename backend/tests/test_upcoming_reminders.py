@@ -93,3 +93,4 @@ def test_check_and_send_upcoming_reminders(db_session):
 
     # Cleanup
     clear_mock_emails()
+

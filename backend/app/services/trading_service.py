@@ -248,3 +248,4 @@ class TradingService:
             "equity_curve": equity_curve,
             "trade_log": trade_log
         }
+

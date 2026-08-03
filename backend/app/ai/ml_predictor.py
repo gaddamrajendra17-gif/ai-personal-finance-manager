@@ -96,3 +96,4 @@ def predict_next_month(user_id, db: Session) -> Dict:
         "model": "LinearRegression",
         "categories_count": len(predictions)
     }
+

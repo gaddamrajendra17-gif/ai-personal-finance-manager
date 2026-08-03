@@ -132,3 +132,4 @@ docker-compose down -v                  # Wipe all Docker data
 Remove-Item -Recurse backend\venv       # Remove Python venv
 Remove-Item -Recurse frontend\node_modules  # Remove node_modules
 .\setup.ps1 -Local                      # Start fresh
+

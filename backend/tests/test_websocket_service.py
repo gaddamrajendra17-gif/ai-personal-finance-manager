@@ -145,3 +145,4 @@ def test_notifications_endpoint_lifecycle(client):
         data = websocket.receive_json()
         assert data["type"] == "connected"
         assert data["message"] == "Connected"
+

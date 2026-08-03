@@ -542,3 +542,4 @@ async def test_multi_user_websocket_isolation():
     # Clean up connections
     ws_manager.disconnect(user_a_id)
     ws_manager.disconnect(user_b_id)
+

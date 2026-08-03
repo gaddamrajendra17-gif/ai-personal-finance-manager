@@ -173,3 +173,4 @@ def _rule_based_response(message: str, context: str) -> str:
     if "save" in msg or "saving" in msg:
         return "To save more, identify your top spending category and reduce it by 10-15%. Use the budget simulator for goal planning!"
     return "I'm a rule-based fallback. Add ANTHROPIC_API_KEY or OPENAI_API_KEY to your .env file to enable AI-powered financial chat!"
+

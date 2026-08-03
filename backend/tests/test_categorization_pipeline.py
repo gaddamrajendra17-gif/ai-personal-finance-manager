@@ -132,3 +132,4 @@ def test_categorize_empty_string():
 def test_categorize_completely_unknown():
     cat, sub = categorize_transaction("XYZABC123", 500.0)
     assert cat == "Other"
+

@@ -609,3 +609,4 @@ export default function BankLinkModal({ isOpen, onClose, onSuccess, onManualClic
     </div>
   );
 }
+

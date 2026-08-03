@@ -74,3 +74,4 @@ async def notify_user(user_id: str, event_type: str, data: dict):
         "type": event_type,
         "data": data
     })
+

@@ -68,3 +68,4 @@ Trends are computed based on the slope $\beta_1$ relative to the mean spending (
 *   Predictive route: [predictions.py](file:///c:/Users/HP/Downloads/pfm-app-win/pfm-app-win/backend/app/api/predictions.py)
 *   Predictive engine: [ml_predictor.py](file:///c:/Users/HP/Downloads/pfm-app-win/pfm-app-win/backend/app/ai/ml_predictor.py)
 *   Frontend UI dashboard: [PredictionsPage.jsx](file:///c:/Users/HP/Downloads/pfm-app-win/pfm-app-win/frontend/src/pages/PredictionsPage.jsx)
+

@@ -178,3 +178,4 @@ def parse_receipt_image(file_path: str, original_filename: str = "") -> Dict[str
 
     result["method"] = method
     return result
+

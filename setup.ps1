@@ -196,3 +196,4 @@ Write-Host "  Easiest: install Docker Desktop then run:" -ForegroundColor Gray
 Write-Host "    docker-compose up postgres redis -d" -ForegroundColor Gray
 Write-Host ""
 Read-Host "Press Enter to close"
+

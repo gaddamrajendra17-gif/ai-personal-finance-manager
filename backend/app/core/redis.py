@@ -40,3 +40,4 @@ async def cache_delete_pattern(pattern: str):
     keys = await r.keys(pattern)
     if keys:
         await r.delete(*keys)
+

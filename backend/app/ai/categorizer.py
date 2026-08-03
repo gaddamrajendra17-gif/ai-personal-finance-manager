@@ -231,3 +231,4 @@ def categorize_transaction(
         pass
 
     return "Other", None
+

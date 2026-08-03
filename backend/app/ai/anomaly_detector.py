@@ -95,3 +95,4 @@ def isolation_forest_check(amounts: list, new_amount: float) -> Tuple[bool, floa
         return bool(pred == -1), float(normalized)
     except ImportError:
         return False, 0.0
+

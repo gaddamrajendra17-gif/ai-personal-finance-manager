@@ -227,3 +227,4 @@ async def test_chat_with_ai_with_history(mock_settings, db_session):
     user_id = str(uuid.uuid4())
     res, thoughts, actions = await chat_with_ai(user_id, "how can I save?", db_session, chat_history=history)
     assert "LLM API key" in res or "save" in res
+

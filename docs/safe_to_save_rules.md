@@ -52,3 +52,4 @@ The system continuously audits total checking account balances to suggest contri
 *   Strategy API endpoints: [savings_strategies.py](file:///c:/Users/HP/Downloads/pfm-app-win/pfm-app-win/backend/app/api/savings_strategies.py)
 *   Business rules engine: [savings_service.py](file:///c:/Users/HP/Downloads/pfm-app-win/pfm-app-win/backend/app/services/savings_service.py)
 *   Savings UI Page: [GoalsPage.jsx](file:///c:/Users/HP/Downloads/pfm-app-win/pfm-app-win/frontend/src/pages/GoalsPage.jsx)
+

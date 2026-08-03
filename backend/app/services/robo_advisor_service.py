@@ -235,3 +235,4 @@ class RoboAdvisorService:
             "projected_growth": projected,
             "rate_of_return_pct": int(rate * 100)
         }
+

@@ -197,3 +197,4 @@ def test_detect_category_food():
 def test_detect_category_other():
     cat = detect_category("Spent Rs.500 on items at XYZStore", "XYZStore")
     assert cat == "Others"
+

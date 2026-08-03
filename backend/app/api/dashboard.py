@@ -153,3 +153,4 @@ def get_dashboard(
         "goals_count": len(goals),
         "goals_completed": sum(1 for g in goals if g.is_completed),
     }
+

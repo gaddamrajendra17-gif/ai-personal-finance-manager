@@ -75,3 +75,4 @@ def check_and_run_recurring_task():
         return loop.run_until_complete(check_and_run_recurring())
     finally:
         loop.close()
+

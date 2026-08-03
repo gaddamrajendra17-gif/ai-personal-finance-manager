@@ -146,3 +146,4 @@ def update_profile(
     db.refresh(current_user)
     return current_user
 
+

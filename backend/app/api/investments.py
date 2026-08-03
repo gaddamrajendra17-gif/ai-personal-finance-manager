@@ -102,3 +102,4 @@ def execute_trade(
             raise HTTPException(status_code=400, detail=str(e))
     else:
         raise HTTPException(status_code=400, detail="Invalid trade action (must be BUY or SELL)")
+

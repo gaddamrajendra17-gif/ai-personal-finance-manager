@@ -195,3 +195,4 @@ def delete_group(
     db.delete(group)
     db.commit()
     return {"status": "deleted"}
+

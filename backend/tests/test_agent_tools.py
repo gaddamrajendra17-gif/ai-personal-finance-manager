@@ -85,3 +85,4 @@ async def test_fallback_agent_transaction_intent(db_session):
     
     db_session.refresh(account)
     assert account.balance == 850.0
+

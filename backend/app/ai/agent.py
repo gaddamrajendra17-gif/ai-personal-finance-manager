@@ -942,3 +942,4 @@ async def run_agent(query: str, user_id: str, db: Session, chat_history: List[di
             print(f"OpenAI agent failed: {e}")
             
     return await run_fallback_agent(query, user_id, db)
+

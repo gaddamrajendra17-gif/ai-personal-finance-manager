@@ -184,3 +184,4 @@ async def check_and_run_recurring(db: Session = None):
     finally:
         if not db_provided:
             db.close()
+

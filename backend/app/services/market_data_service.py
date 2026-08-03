@@ -98,3 +98,4 @@ class MarketDataService:
                 "change_percent": round(change_percent, 2)
             })
         return overview
+

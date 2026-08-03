@@ -72,3 +72,4 @@ Others         ███████████████████ 78.1% (
 *   Training script: [train_categorizer.py](file:///c:/Users/HP/Downloads/pfm-app-win/pfm-app-win/ml/training/train_categorizer.py)
 *   Inference logic: [categorizer.py](file:///c:/Users/HP/Downloads/pfm-app-win/pfm-app-win/backend/app/ai/categorizer.py)
 *   Vocabulary definitions: [sms_receiver.py](file:///c:/Users/HP/Downloads/pfm-app-win/pfm-app-win/backend/app/api/sms_receiver.py)
+

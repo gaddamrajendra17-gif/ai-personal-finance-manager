@@ -197,3 +197,4 @@ def forecast_expenses(user_id: str, db: Session, periods: int = 30) -> Dict:
             "model": "MovingAverage + LSTM"
         }
 
+

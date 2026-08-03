@@ -196,3 +196,4 @@ def parse_sms(req: SMSParseRequest):
 def get_webhook_url(request: Request):
     base = str(request.base_url).rstrip("/")
     return {"webhook_url": f"{base}/api/sms/webhook", "method": "POST", "content_type": "application/json", "body_template": "{\"phone\": \"%from%\", \"message\": \"%body%\"}"}
+

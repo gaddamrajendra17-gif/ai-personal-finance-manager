@@ -211,3 +211,4 @@ def get_advisory(
         "recommendations": advice_list,
         "monitoring_alerts": monitoring_alerts
     }
+

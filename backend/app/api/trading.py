@@ -139,3 +139,4 @@ def delete_strategy(
     db.delete(strategy)
     db.commit()
     return {"status": "success"}
+

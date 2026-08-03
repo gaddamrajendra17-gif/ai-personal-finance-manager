@@ -95,3 +95,4 @@ def auth_headers(client, db_session):
     token = token_data["access_token"]
     
     return {"Authorization": f"Bearer {token}"}
+

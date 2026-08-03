@@ -51,3 +51,4 @@ def update_budget_on_transaction(user_id: str, category: str, amount: float, db:
             pass
 
     return alert
+

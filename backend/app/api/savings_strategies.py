@@ -204,3 +204,4 @@ def execute_savings_sweep(
     
     db.commit()
     return {"status": "success", "new_balance": account.balance, "new_goal_amount": goal.current_amount}
+

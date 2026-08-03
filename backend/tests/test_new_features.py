@@ -86,3 +86,4 @@ def test_group_split_serialization():
     assert serialized["expenses"][0]["perPerson"] == 300.0
     assert serialized["expenses"][0]["settlements"][0]["from"] == "You"
     assert serialized["expenses"][0]["settlements"][0]["settled"] is False
+

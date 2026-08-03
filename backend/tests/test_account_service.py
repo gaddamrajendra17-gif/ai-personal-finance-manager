@@ -176,3 +176,4 @@ def test_reactivate_account(db_session):
     db_session.commit()
     db_session.refresh(account)
     assert account.is_active is True
+

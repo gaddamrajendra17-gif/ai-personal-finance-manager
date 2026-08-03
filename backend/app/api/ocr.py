@@ -50,3 +50,4 @@ async def scan_receipt(
         # Clean up temporary file
         if os.path.exists(temp_file_path):
             os.remove(temp_file_path)
+

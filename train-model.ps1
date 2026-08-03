@@ -19,3 +19,4 @@ python ml\training\train_categorizer.py
 
 Write-Host ""
 Write-Host "Model saved to ml\models\categorizer.pkl" -ForegroundColor Green
+

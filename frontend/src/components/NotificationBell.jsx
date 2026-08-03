@@ -140,3 +140,4 @@ export default function NotificationBell({ token, userId }) {
     </div>
   );
 }
+

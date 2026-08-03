@@ -188,3 +188,4 @@ def test_budget_spent_amount_reset(db_session):
     b.spent_amount = 0.0
     db_session.commit()
     assert b.spent_amount == 0.0
+

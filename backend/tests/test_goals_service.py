@@ -158,3 +158,4 @@ def test_savings_goal_completed_flag(db_session):
         goal.is_completed = True
     db_session.commit()
     assert goal.is_completed is True
+

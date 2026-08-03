@@ -179,3 +179,4 @@ def test_login_streak_consecutive(client, db_session):
     assert response.status_code == 200
     db_session.refresh(user)
     assert user.login_streak >= 1
+

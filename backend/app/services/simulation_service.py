@@ -200,3 +200,4 @@ async def run_simulation_tick():
         print(f"Error in transaction simulation tick: {e}")
     finally:
         db.close()
+

@@ -314,3 +314,4 @@ async def sync_plaid_transactions_for_item(db: Session, access_token: str, user_
             db.commit()
     except Exception as e:
         print(f"Error executing Plaid transaction sync: {e}")
+

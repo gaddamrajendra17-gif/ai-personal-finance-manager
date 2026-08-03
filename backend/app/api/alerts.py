@@ -48,3 +48,4 @@ def mark_all_read(
     ).update({"is_read": True})
     db.commit()
     return {"status": "ok"}
+

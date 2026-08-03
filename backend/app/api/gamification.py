@@ -295,3 +295,4 @@ def get_leaderboard(db: Session = Depends(get_db), current_user: User = Depends(
         leaderboard.append({"name": u.full_name, "points": points, "badges": len(earned)})
     leaderboard.sort(key=lambda x: x["points"], reverse=True)
     return leaderboard[:10]
+

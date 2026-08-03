@@ -94,3 +94,4 @@ def send_email_reminder(to_email: str, subject: str, html_content: str):
         print(f"Failed to send email via SMTP: {e}. Falling back to simulator.")
         save_mock_email(to_email, f"[SMTP Fallback] {subject}", html_content)
         return False
+

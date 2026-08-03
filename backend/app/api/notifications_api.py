@@ -90,3 +90,4 @@ def clear_simulated_emails(current_user: User = Depends(get_current_user)):
     from app.services.email_service import clear_mock_emails
     clear_mock_emails()
     return {"success": True, "message": "Simulated inbox cleared."}
+

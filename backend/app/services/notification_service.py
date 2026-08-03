@@ -87,3 +87,4 @@ def notify_large_spend(db, user_id, amount, category, threshold=5000, phone=None
         title = "Large Transaction Alert"
         message = f"Large spend of Rs.{abs(amount):,.0f} detected in {category}"
         return create_notification(db, user_id, title, message, "warning", phone)
+

@@ -39,3 +39,4 @@ test.describe('Authentication E2E Flow', () => {
     await expect(errorAlert).toContainText('Incorrect email or password');
   });
 });
+

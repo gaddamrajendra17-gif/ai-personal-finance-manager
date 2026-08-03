@@ -201,3 +201,4 @@ Content-Type: application/json
 ### 18. Alerts
 GET {{baseUrl}}/api/alerts/
 Authorization: Bearer {{token}}
+

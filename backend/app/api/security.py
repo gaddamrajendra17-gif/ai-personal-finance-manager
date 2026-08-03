@@ -90,3 +90,4 @@ def update_privacy_settings(
         "status": "success",
         "settings": _privacy_settings
     }
+

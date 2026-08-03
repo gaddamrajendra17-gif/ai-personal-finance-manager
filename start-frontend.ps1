@@ -14,3 +14,4 @@ if (-not (Test-Path "node_modules")) {
 Write-Host "Frontend running at http://localhost:5173" -ForegroundColor Green
 Write-Host ""
 npm run dev
+

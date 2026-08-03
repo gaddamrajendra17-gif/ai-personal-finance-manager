@@ -246,3 +246,4 @@ def test_get_leaderboard_limit_size(client, auth_headers, db_session):
     assert response.status_code == 200
     leaderboard = response.json()
     assert len(leaderboard) <= 10
+

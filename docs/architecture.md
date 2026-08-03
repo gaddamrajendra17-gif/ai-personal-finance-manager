@@ -74,3 +74,4 @@ graph TD
 ## ⚡ Deployment & Infrastructure Baner
 *   **Protocol**: REST for standard requests; WebSockets for real-time transaction ingestion and push alerts.
 *   **Execution Profile**: **CPU-only inference** (no GPU required) for scikit-learn Naive Bayes, Linear Regression, and Facebook Prophet forecasting models, enabling easy hosting on lightweight, cost-effective servers.
+

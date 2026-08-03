@@ -271,3 +271,4 @@ def test_forecast_with_custom_period(db_session):
     with patch("prophet.Prophet", create=True, side_effect=ImportError):
         res = forecast_expenses(str(user.id), db_session, periods=45)
         assert len(res["daily_forecast"]) == 45
+

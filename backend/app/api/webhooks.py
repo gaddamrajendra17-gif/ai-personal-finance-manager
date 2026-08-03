@@ -122,3 +122,4 @@ async def receive_transaction(
     background_tasks.add_task(process_transaction_async, txn_data, db)
 
     return {"status": "received", "txn_id": txn_data.txn_id}
+

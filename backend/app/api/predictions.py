@@ -13,3 +13,4 @@ def get_predictions(
     current_user: User = Depends(get_current_user)
 ):
     return predict_next_month(current_user.id, db)
+

@@ -79,3 +79,4 @@ def delete_recurring_transaction(
     db.delete(recurring)
     db.commit()
     return {"success": True, "message": "Recurring transaction deleted"}
+

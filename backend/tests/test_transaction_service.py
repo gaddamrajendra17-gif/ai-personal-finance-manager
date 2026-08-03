@@ -313,3 +313,4 @@ def test_transaction_relationship_to_account(db_session):
     db_session.commit()
     assert txn.account.bank_name == "Generic Bank"
     assert len(account.transactions) == 1
+
